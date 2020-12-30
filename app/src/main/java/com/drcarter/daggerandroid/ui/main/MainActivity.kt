@@ -1,10 +1,12 @@
 package com.drcarter.daggerandroid.ui.main
 
+import android.content.Intent
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.drcarter.daggerandroid.R.layout
 import com.drcarter.daggerandroid.databinding.ActivityMainBinding
 import com.drcarter.daggerandroid.ui.BaseActivity
+import com.drcarter.daggerandroid.ui.sub.SubActivity
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -44,6 +46,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), HasAndroidInjector {
             buttonTaxiSpeedDecrease.setOnClickListener {
                 mainViewModel.decreaseTaxiSpeed()
                 textTaxiSpeed.text = "taxi speed : " + mainViewModel.currentTaxiSpeed()
+            }
+
+            buttonSub.setOnClickListener {
+                Intent(this@MainActivity, SubActivity::class.java).run {
+                    startActivity(this)
+                }
             }
         }
     }
